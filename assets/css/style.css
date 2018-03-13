@@ -1,5 +1,5 @@
 * {
-    border: 1px dotted red;
+    /* border: 1px dotted red; */
     margin: 10px;
     box-sizing: border-box;
 }
@@ -10,8 +10,8 @@
     height: 500px;
 }
 
-#player-one,
-#player-two {
+#first_player,
+#second_player {
  height: 200px;
 }
 
