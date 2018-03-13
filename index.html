@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Including Firebase 4.11.0 -->
+    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+
+    <!-- Including jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Including Bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <title>RPS 2.0</title>
+</head>
+
+<body>
+    <div id="page">
+        <header id="header">
+            <h2 id="title">Rock, Paper, Scissors 2.0</h2>
+        </header>
+
+        <div id="playing-area">
+
+            <div id="first_player">
+                <h4>Waiting for Player 1</h4>
+                <input type="text" name="player_one" class="player">
+                <input type="button" value="Submit" id="player1">
+            </div>
+
+            <div id="second_player">
+                <h4>Waiting for Player 2</h4>
+                <input type="text" name="player_two" class="player">
+                <input type="button" value="Submit" id="player2">
+            </div>
+
+        </div>
+
+        <aside id="chat-area">
+            <h3>Chat with your Opponent</h3>
+            <form>
+                <textarea name="message" id="chat-box">Enter message here</textarea>
+                <button type="submit" id="submit">Send</button>
+            </form>
+        </aside>
+        <footer id="footer">Copyright 2018 &copy CM Solutions</footer>
+    </div>
+
+    <!-- Including Javascript file -->
+    <script src="assets/javascript/game.js"></script>
+</body>
+
+</html>
