@@ -3,7 +3,6 @@ $(document).ready(function () {
     /*** Set Global Variables ***/
     var firstPlayerSelected = false;
     var losses = 0;
-    var playerID = 0;
     var wins = 0;
 
     // Initialize Firebase
@@ -23,29 +22,26 @@ $(document).ready(function () {
     $(document).on("click", "input#select_player", function () {
 
         event.preventDefault();
+        var name = document.getElementById("player_name").value.trim();
 
-        var player_name = document.getElementById("player_name").value.trim();
-        if (player_name === "") {
+        if (name === "") {
             console.log("No name entered.");
         }
         else {
-            console.log(player_name);
-            selectPlayers(player_name);
+            selectPlayers(name);
         }
     });
 
     function selectPlayers(name) {
+        var playerID = 0;
         if (firstPlayerSelected === false) {
             playerID = 1;
-            var player1 = "players/" + playerID;
-            database.ref(player1).set({
+            database.ref("players/" + playerID).set({
                 name: name,
                 wins: wins,
                 losses: losses
             });
             firstPlayerSelected = true;
-            console.log(database.ref(player1).name);
-
         }
         else {
             playerID = 2;
@@ -55,5 +51,16 @@ $(document).ready(function () {
                 losses: losses
             });
         }
+
+        database.ref().on("value", function (snapshot) {
+            console.log(snapshot.val());
+        });
     }
 });
+
+
+
+// Things to consider:
+// 1. Initialize database with empty attributes
+// 2. Find a way to reference the items in an array
+// 3. 
