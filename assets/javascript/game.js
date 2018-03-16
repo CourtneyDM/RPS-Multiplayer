@@ -2,6 +2,7 @@ $(document).ready(function () {
 
     /*** Set Global Variables ***/
     var firstPlayerSelected = false;
+    var playerID = 0;
     var losses = 0;
     var wins = 0;
 
@@ -16,51 +17,65 @@ $(document).ready(function () {
     };
     firebase.initializeApp(config);
 
+    // Reference to database
     var database = firebase.database();
 
-    // Listener when Name button has been clicked
-    $(document).on("click", "input#select_player", function () {
+    // All players will be stored in this directory
+    var playersRef = database.ref("players/");
 
-        event.preventDefault();
-        var name = document.getElementById("player_name").value.trim();
+    // Reference for when a client's connection state changes
+    var connectedRef = database.ref(".info/connected");
 
-        if (name === "") {
-            console.log("No name entered.");
-        }
-        else {
-            selectPlayers(name);
+    /********************** Begin Checking for Connection State ****************************/
+    // When the client's connection state changes...
+    connectedRef.on("value", function (connected) {
+
+        // If they are connected..
+        if (connected.val()) {
+            console.log(connected.val());
+
+            // Add user to the connections list.
+            var con = playersRef.push(true);
+
+            // create a variable and assign it to a function that will add a user to the database
+
+            // Remove user from the connection list when they disconnect.
+            con.onDisconnect().remove();
         }
     });
 
-    function selectPlayers(name) {
-        var playerID = 0;
-        if (firstPlayerSelected === false) {
-            playerID = 1;
-            database.ref("players/" + playerID).set({
-                name: name,
-                wins: wins,
-                losses: losses
-            });
-            firstPlayerSelected = true;
-        }
-        else {
-            playerID = 2;
-            database.ref("players/" + playerID).set({
-                name: name,
-                wins: wins,
-                losses: losses
-            });
-        }
+    // When first loaded or when the connections list changes...
+    playersRef.on("value", function (snap) {
 
-        database.ref().on("value", function (snapshot) {
-            console.log(snapshot.val());
-        });
-    }
+        // Display the viewer count in the html.
+        // The number of online users is the number of children in the connections list.
+        $("#player_one").text(snap.numChildren());
+    });
+
+    /********************** Done Checking for Connection State ************************/
+
+
+
+    // document.getElementById("select_player").addEventListener("click", function () {
+
+
+    //     var name = document.getElementById("player_name").value.trim();
+    //     console.log(name);
+    //     var player = [playerID, {
+    //         name: name,
+    //         wins: wins,
+    //         losses: losses
+    //     }];
+    //     // playersRef.push(player);
+    //     database.ref("players/").push(player);
+    // });
 });
 
 
 
 // Things to consider:
-// 1. Initialize database with empty attributes
-// 2. Find a way to reference the items in an array
-// 3. 
+// 1. Keep database events separate from logic code
+// 2. Keep connection to database separate from logic code
+// 3. Find a way to create a waiting room
+// 4. Use the connections events to process chat functionality
+// 5. $(document).ready function - what is the benefits and best way to use
