@@ -4,18 +4,18 @@
     box-sizing: border-box;
 }
 
-#playing-area {
+#stage {
     display: inline-block;
     width: 700px;
     height: 500px;
 }
 
-#first_player,
-#second_player {
+#player_one,
+#player_two {
  height: 200px;
 }
 
-#chat-area {
+#chat {
     float: right;
     height: auto;
     width: 400px;

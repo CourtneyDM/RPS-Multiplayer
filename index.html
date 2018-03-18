@@ -10,6 +10,54 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
 
+    <title>RPS 2.0</title>
+</head>
+
+<body>
+    <!-- Start of page content -->
+    <div id="content">
+        <header id="header">
+            <h2 id="title">Rock, Paper, Scissors 2.0</h2>
+        </header>
+
+
+        <!-- Input text to receive player names -->
+        <div id="stage">
+            <input type="text" name="player" id="player">
+            <input type="button" value="Name" id="submitBtn">
+
+
+            <!-- Platform for player 1 -->
+            <div id="player_one">
+                <h4>Waiting for Player 1</h4>
+                <span id="player1"></span>
+                <p class="choices"></p>
+            </div>
+
+
+            <!-- Platform for player 2 -->
+            <div id="player_two">
+                <h4>Waiting for Player 2</h4>
+                <span id="player2"></span>
+                <p class="choices"></p>
+            </div>
+
+        </div>
+
+
+        <!-- Chat Platform -->
+        <aside id="chat">
+            <h3>Chat with your Opponent</h3>
+            <form>
+                <textarea name="message" id="chat-box">Enter message here</textarea>
+                <button type="submit" id="sendBtn">Send</button>
+            </form>
+        </aside>
+
+
+        <!-- Footer information -->
+        <footer id="footer">Copyright 2018 &copy CDM</footer>
+    </div>
     <!-- Including Firebase 4.11.0 -->
     <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
 
@@ -18,55 +66,6 @@
 
     <!-- Including Bootstrap -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <title>RPS 2.0</title>
-</head>
-
-<body>
-    <!-- Start of page content -->
-    <div id="page">
-        <header id="header">
-            <h2 id="title">Rock, Paper, Scissors 2.0</h2>
-        </header>
-
-
-        <!-- Input text to receive player names -->
-        <div id="playing-area">
-            <input type="text" name="player" id="player_name">
-            <input type="button" value="Name" id="select_player">
-
-
-            <!-- Platform for player 1 -->
-            <div id="first_player">
-                <h4>Waiting for Player 1</h4>
-                <span id="player_one"></span>
-                <p class="choices"></p>
-            </div>
-
-
-            <!-- Platform for player 2 -->
-            <div id="second_player">
-                <h4>Waiting for Player 2</h4>
-                <span id="player_two"></span>
-                <p class="choices"></p>
-            </div>
-
-        </div>
-
-
-        <!-- Chat Platform -->
-        <aside id="chat-area">
-            <h3>Chat with your Opponent</h3>
-            <form>
-                <textarea name="message" id="chat-box">Enter message here</textarea>
-                <button type="submit" id="send_chat">Send</button>
-            </form>
-        </aside>
-
-
-        <!-- Footer information -->
-        <footer id="footer">Copyright 2018 &copy CM Solutions</footer>
-    </div>
 
     <!-- Including Javascript file -->
     <script src="assets/javascript/game.js"></script>
